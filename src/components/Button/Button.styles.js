@@ -23,7 +23,7 @@ export const StyledButton = styled.button`
 `
 //creating a variant button that extends the styles of the previous button that we can customize specific properties
 export const FancyButton = styled(StyledButton)`
-  background-image: linear-gradient(to right, rgb(21, 21, 219) 0%, rgb(23, 25, 69)  100%);
+  background-image: linear-gradient(to right, rgb(21, 21, 219) 0%, rgb(25, 25, 69)  100%); 
   border: none;
   margin: 1px;
   font-size: 1.5rem;

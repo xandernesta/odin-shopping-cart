@@ -8,8 +8,11 @@ export const GlobalStyle = styled.createGlobalStyle`
         --header-background-color:rgb(9, 61, 107);
         --light-font-color: rgb(238, 238, 238);
         --sidebar-background-color:rgb(14, 100, 100, .8);
-        --blue: rgb(9, 61, 107);
+        --light-blue: rgb(12, 192, 223);
+        --medium-blue: rgb(53, 51, 205);
+        --dark-blue: rgb(7, 59, 105);
         --purple: rgb(94, 14, 144);
+        --yellow: rgb(255, 222, 89);
         --aqua: #00B3BB;
         --light-aqua: #00E6AA;
         --dark-aqua: #0E9AA1;
@@ -18,7 +21,7 @@ export const GlobalStyle = styled.createGlobalStyle`
         --background-dark: rgba(0, 0, 0, 0.9);
         --background-light: #DFF1F6;
         
-        font-family: 'Montserrat','Poppins', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        font-family: 'JetBrains Mono','Montserrat','Poppins', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
         line-height: 1.5;
         font-weight: 300;
         
@@ -43,7 +46,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--light-font-color);
   text-decoration: inherit;
 }
 a:hover {
@@ -53,7 +56,7 @@ a:hover {
 h1 {
   font-size: 3.2em;
   line-height: 1.2;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 body {

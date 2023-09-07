@@ -2,9 +2,9 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import {FancyButton} from './components/Button/Button.jsx'
 import {Footer} from './components/Footer/Footer'
-import {BrowserRouter, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-function App () {
+export function App () {
   const [count, setCount] = useState(0)
 
   const handleClick = () => {
@@ -12,19 +12,16 @@ function App () {
   }
   return (
     <>
-    <BrowserRouter>
       <MainWrapper>
         <h1>Dream Computers</h1>
         <Link to="products">
           <FancyButton onClick={handleClick}>Shop Now</FancyButton>
         </Link>
       </MainWrapper>
-    </BrowserRouter>
     </>
   )
 }
 
-export default App
 
 const MainWrapper = styled.div`
   position: absolute;
