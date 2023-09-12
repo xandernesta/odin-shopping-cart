@@ -1,27 +1,19 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import {FancyButton} from './components/Button/Button.jsx'
-import {Footer} from './components/Footer/Footer'
-import {Link} from 'react-router-dom'
+import { FancyButton } from './components/Button/Button.jsx'
+import { Footer } from './components/Footer/Footer'
+import { Link } from 'react-router-dom'
 
 export function App () {
-  const [count, setCount] = useState(0)
-
-  const handleClick = () => {
-    setCount(prev => prev + 1)
-  }
   return (
-    <>
-      <MainWrapper>
-        <h1>Dream Computers</h1>
-        <Link to="products">
-          <FancyButton onClick={handleClick}>Shop Now</FancyButton>
-        </Link>
-      </MainWrapper>
-    </>
+    <MainWrapper data-testid='appbg'>
+      <h1>Dream Computers</h1>
+      <Link to='products'>
+        <FancyButton>Shop Now</FancyButton>
+      </Link>
+    </MainWrapper>
   )
 }
-
 
 const MainWrapper = styled.div`
   position: absolute;
@@ -33,16 +25,16 @@ const MainWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   h1 {
-      position: absolute;
-      top: 10vh;
-      left: 10vw;
-      font-size: 5rem;
-      width: 100px;
-      font-color: var(--light-font-color);
-    }
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    font-size: 5rem;
+    width: 100px;
+    font-color: var(--light-font-color);
+  }
   ${FancyButton} {
-      position: absolute;
-      bottom: 10vh;
-      left: 45.4vw;
-    }
+    position: absolute;
+    bottom: 10vh;
+    left: 45.4vw;
+  }
 `

@@ -1,4 +1,3 @@
-import { StyledButton, FancyButton } from "./Button.styles.js"
+import { StyledButton, FancyButton } from './Button.styles.js'
 
-
-export {StyledButton, FancyButton}
+export { StyledButton, FancyButton }

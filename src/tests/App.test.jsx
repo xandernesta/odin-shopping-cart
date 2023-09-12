@@ -1,25 +1,81 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent, getByText} from '@testing-library/react'
+import {
+  render,
+  screen,
+  container,
+  fireEvent,
+  getByText,
+  getByTestId
+} from '@testing-library/react'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
-import App from '../App'
+import { App } from '../App.jsx'
+import { Products } from '../components/Products/Products.jsx'
 
-describe('App', () => { 
-  it('render headline',() => { 
-    render(<App />);
+describe('App', () => {
+  it('renders correctly', () => {
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/products' element={<Products />} />
+        </Routes>
+      </MemoryRouter>
+    )
+  })
+  it('render headline', () => {
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/products' element={<Products />} />
+        </Routes>
+      </MemoryRouter>
+    )
 
     //check if App component renders headline
-    expect(screen.getByRole("heading").textContent).toMatch(/shop/i);
+    expect(screen.getByRole('heading').textContent).toMatch(/Dream Computers/i)
+  })
+  it('renders background image', async () => {
+   await render(
+      <MemoryRouter>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/products' element={<Products />} />
+        </Routes>
+      </MemoryRouter>
+    )
+    expect(screen.getByTestId('appbg')).toBeInTheDocument()
   })
 
-  it('Click the button', async () => {
-    const user = userEvent.setup();
+  it('renders a button link to products', () => {
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/products' element={<Products />} />
+        </Routes>
+      </MemoryRouter>
+    )
+    expect(screen.getByRole('link', { name: /shop now/i })).toBeInTheDocument()
+  })
 
-    render(<App />);
-    const button = screen.getByRole("button", { name: "Shop" })
+  it('allows user to Click the button to move to products page which has a link to Home', async () => {
+    const user = userEvent.setup()
+
+    render(
+      <MemoryRouter>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/products' element={<Products />} />
+        </Routes>
+      </MemoryRouter>
+    )
+    const button = screen.getByRole('link', { name: 'Shop Now' })
 
     await user.click(button)
 
-    expect(screen.getByText('shop 1', {exact: false}));
-
+    await expect(
+      screen.getByRole('link', { name: /home/i })
+    ).toBeInTheDocument()
   })
- })
+})

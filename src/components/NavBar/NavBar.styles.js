@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const NavWrapper = styled.nav`
   display: flex;
@@ -21,5 +21,34 @@ export const NavLinkStyle = styled(Link)`
 
   &:hover {
     transform: scale(1.1);
+    color: var(--dark-font-color);
   }
+`
+export const ButtonContainer = styled.div`
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(1.02);
+  }
+`
+
+export const Quantity = styled.div`
+  position: absolute;
+  top: 2.6rem;
+  right: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50px;
+  background-color: var(--purple);
+  font-size: 1.3rem;
+  font-weight: bold;
 `
