@@ -4,8 +4,10 @@ export const GlobalStyle = styled.createGlobalStyle`
     /* google fonts were imported in the index.html */
     :root {
         --dark-font-color: black;
-        --dark-gray:rgb(94, 94, 94);
+        --gray: #5f5e5e;
+        --dark-gray: #242424;
         --header-background-color:rgb(9, 61, 107);
+        --footer-background-color:rgb(5, 5, 128);
         --light-font-color: rgb(238, 238, 238);
         --sidebar-background-color:rgb(14, 100, 100, .8);
         --light-blue: rgb(12, 192, 223);
@@ -50,19 +52,32 @@ a:hover {
   color: #535bf2;
 }
 
+img {
+    display: block;
+    width: 100%;
+  }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.2;
   font-weight: 700;
 }
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+}
+
+header,
+footer {
+  flex: none;
 }
 
 button {

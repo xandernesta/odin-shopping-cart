@@ -30,11 +30,35 @@ const MainWrapper = styled.div`
     left: 10vw;
     font-size: 5rem;
     width: 100px;
-    font-color: var(--light-font-color);
   }
   ${FancyButton} {
     position: absolute;
     bottom: 10vh;
     left: 45.4vw;
+    padding: .8rem;
+    width: 10rem;
+  }
+
+  @media (max-width: 768px) {
+    background-position: center;
+    ${FancyButton} {
+      position: absolute;
+      bottom: 10vh;
+      left: 37vw;
+    }
+  }
+
+  @media (max-width: 470px){
+    h1 {
+      position: absolute;
+      top: 8vh;
+      left: 8vw;
+      font-size: 4rem;
+    }
+    ${FancyButton} {
+      position: absolute;
+      bottom: 10vh;
+      left: 37vw;
+  }
   }
 `

@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 //initially had the styled-components imported into the Button.jsx but moved into its only styles.js sheet for better organization and customization
 export const StyledButton = styled.button`
-  border-radius: 50px;
-  border: 1px solid transparent;
-  padding: 0.8rem 0.8rem;
+  border-radius: 40px;
+  border: 3px solid transparent;
+  padding: 0.6rem;
   margin: 0.2rem;
   font-size: 2rem;
   font-weight: bold;
@@ -18,7 +18,7 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.1s;
   &:hover {
     .cartIcon {
       fill: #3232f1;
@@ -30,13 +30,15 @@ export const FancyButton = styled(StyledButton)`
   background-image: linear-gradient(
     to right,
     rgb(21, 21, 219) 0%,
-    rgb(25, 25, 69) 100%
+    rgb(16, 16, 61) 110%
   );
   border: none;
-  margin: 1px;
+  border-radius: 25px;
+  margin: 2px;
+  padding: 1px;
   font-size: 1.5rem;
   &:hover {
     margin: 0;
-    border: 1px solid white;
+    border: 2px solid white;
   }
 `

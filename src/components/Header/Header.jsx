@@ -25,11 +25,20 @@ const HeaderStyle = styled.header`
   position: absolute;
   top: 0;
   left: 0;
+  margin-bottom: 1rem;
   background: linear-gradient(90deg, var(--light-blue) 0%, var(--yellow) 100%);
   border-color: 1px solid var(--dark-font-color);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1rem;
+
+  }
 `
 const StyledLink = styled(Link)`
   &:hover {
     color: var(--dark-font-color);
   }
+
+  
 `

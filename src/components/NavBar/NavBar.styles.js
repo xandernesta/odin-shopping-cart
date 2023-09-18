@@ -16,12 +16,12 @@ export const NavWrapper = styled.nav`
 `
 export const NavLinkStyle = styled(Link)`
   padding: 1rem;
-  color: var(--light-font-color);
+  color: var(--dark-font-color);
   transition: transform 0.15s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
-    color: var(--dark-font-color);
+    color: var(--light-font-color);
   }
 `
 export const ButtonContainer = styled.div`
