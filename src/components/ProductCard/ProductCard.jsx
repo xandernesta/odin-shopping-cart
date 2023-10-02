@@ -1,7 +1,12 @@
+import { useState , useContext } from 'react'
 import styled from 'styled-components'
 import {StyledButton} from '../Button/Button'
+import {CartContext,  CartDispatchContext} from '../../context/CartContext'
 
-export const ItemCard = ({id, img, title, price}) => {
+export const ProductCard = ({id, img, title, price}) => {
+    const product = { id, img, title, price }
+    const cart = useContext(CartContext)
+    const dispatch = useContext(CartDispatchContext);
     return(
         <CardWrapper>
             <ImageContainer>
@@ -15,7 +20,12 @@ export const ItemCard = ({id, img, title, price}) => {
                     <Title>{title}</Title>
                     <Price>${price.toFixed(2)}</Price>
                 </Info>
-                <CartButton>Add to Cart</CartButton>
+                <CartButton onClick={
+                        dispatch({
+                            type: 'added',
+                            payload: product,
+                        })
+                }>Add to Cart</CartButton>
             </Details>
         </CardWrapper>
     )
@@ -32,7 +42,7 @@ const CardWrapper = styled.div`
     box-shadow: 0px 0px 6px 4px rgba(0,0,0,.15);
     margin: 1rem;
     width: 80%;
-    @media (max-width: 768px) {
+    @media (max-width: 794px) {
         width: 20rem;
     }
     @media (max-width: 480px) {

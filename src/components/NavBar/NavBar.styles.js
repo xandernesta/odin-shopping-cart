@@ -8,7 +8,10 @@ export const NavWrapper = styled.nav`
   gap: 2rem;
   font-size: 2rem;
   margin-right: 1rem;
-
+  @media (max-width: 908px) {
+    gap: 0;
+    width: 45%;
+  }
   @media (max-width: 480px) {
     gap: 0;
     width: 100%;
@@ -22,6 +25,10 @@ export const NavLinkStyle = styled(Link)`
   &:hover {
     transform: scale(1.1);
     color: var(--light-font-color);
+  }
+
+  @media (max-width: 769px) {
+    padding-top: 4px;
   }
 `
 export const ButtonContainer = styled.div`
@@ -37,7 +44,6 @@ export const ButtonContainer = styled.div`
     transform: scale(1.02);
   }
 `
-
 export const Quantity = styled.div`
   position: absolute;
   top: 2.6rem;

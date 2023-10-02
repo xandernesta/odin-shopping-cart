@@ -14,7 +14,7 @@ export const NavBar = () => {
       <NavBarLink path='/' name='Home'></NavBarLink>
       <NavBarLink path='/products' name='Products'></NavBarLink>
       <ButtonContainer>
-        <StyledButton variant={'round'}>
+        <StyledButton variant={'round'} >
           <IconContext.Provider value={{ className: 'cartIcon' }}>
             <FaShoppingCart />
           </IconContext.Provider>

@@ -5,6 +5,7 @@ export const StyledButton = styled.button`
   border-radius: 40px;
   border: 3px solid transparent;
   padding: 0.6rem;
+  padding-left: 0.45rem;
   margin: 0.2rem;
   font-size: 2rem;
   font-weight: bold;
@@ -41,4 +42,9 @@ export const FancyButton = styled(StyledButton)`
     margin: 0;
     border: 2px solid white;
   }
+`
+export const CartButton = styled(StyledButton)`
+  padding: 1rem;
+  background-color: ${props =>
+    props.variant === 'close' ? 'rgb(138, 2, 2)' : 'rgb(26, 97, 26)'};
 `

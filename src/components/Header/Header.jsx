@@ -5,7 +5,7 @@ import { NavBar } from '../NavBar/NavBar'
 export function Header () {
   return (
     <HeaderStyle>
-      <StyledLink to='/'>Dream Computers</StyledLink>
+      <StyledLink className="toApp" to='/'>Dream Computers</StyledLink>
       <NavBar />
     </HeaderStyle>
   )
@@ -29,10 +29,21 @@ const HeaderStyle = styled.header`
   background: linear-gradient(90deg, var(--light-blue) 0%, var(--yellow) 100%);
   border-color: 1px solid var(--dark-font-color);
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 1rem;
+  @media (max-width: 1054px) {
+    font-size: 3rem;
 
+  }
+  @media (max-width: 888px) {
+    .toApp{
+      font-size: 2.72rem;
+    }
+  }
+  @media (max-width: 794px) {
+    flex-direction: column;
+    font-size: 3rem;
+    .toApp{
+      font-size: 3.6rem;
+    }
   }
 `
 const StyledLink = styled(Link)`
