@@ -1,12 +1,11 @@
 import { useState , useContext } from 'react'
 import styled from 'styled-components'
 import {StyledButton} from '../Button/Button'
-import {CartContext,  CartDispatchContext} from '../../context/CartContext'
+import {useCart,  useCartDispatch, } from '../../context/CartContext'
 
-export const ProductCard = ({id, img, title, price}) => {
-    const product = { id, img, title, price }
-    const cart = useContext(CartContext)
-    const dispatch = useContext(CartDispatchContext);
+export const ProductCard = ({id, title, price, img, showOrCloseCart}) => {
+    const product = { "id":{id}, "img":{img}, "title":{title}, "price":{price} }
+    const dispatch = useCartDispatch();
     return(
         <CardWrapper>
             <ImageContainer>
@@ -20,12 +19,16 @@ export const ProductCard = ({id, img, title, price}) => {
                     <Title>{title}</Title>
                     <Price>${price.toFixed(2)}</Price>
                 </Info>
-                <CartButton onClick={
-                        dispatch({
+                <CartButton onClick={() => {                    
+                    showOrCloseCart()
+                    dispatch({
                             type: 'added',
-                            payload: product,
-                        })
-                }>Add to Cart</CartButton>
+                            id: id,
+                            title: title,
+                            price: price,
+                            image: img,
+                        }) 
+                    }}>Add to Cart</CartButton>
             </Details>
         </CardWrapper>
     )

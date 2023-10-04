@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { App } from './App.jsx'
 import { Products } from './components/Products/Products.jsx'
 import { GlobalStyle } from './theme/GlobalStyle.js'
+import {CartProvider } from './context/CartContext'
 
 const router = createBrowserRouter([
   {

@@ -43,7 +43,7 @@ export const ButtonContainer = styled.div`
   &:active {
     transform: scale(1.02);
   }
-`
+` 
 export const Quantity = styled.div`
   position: absolute;
   top: 2.6rem;

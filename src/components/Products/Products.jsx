@@ -4,15 +4,20 @@ import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header'
 import { ProductCard } from '../ProductCard/ProductCard'
 import { Cart } from '../Cart/Cart'
-import {CartProvider, CartContext,  CartDispatchContext} from '../../context/CartContext'
+import {CartProvider, useCart, useCartDispatch} from '../../context/CartContext'
+
 
 export const Products = () => {
-  const [showCart, setShowCart] = useState(true)
-  //might not need
-  const cart = useContext(CartContext)
-  const dispatch = useContext(CartDispatchContext);
+ 
+  const dispatch = useCartDispatch()
+  /* const [showCart, setShowCart] = useIsCartOpen() */
+  const [isCartOpen, setIsCartOpen] = useState(false)
 
-  const Products = [
+  function showOrCloseCart(){
+    setIsCartOpen(!isCartOpen)
+  }
+
+  const products = [
     {
       id: 9,
       title: 'WD 2TB Elements Portable External Hard Drive - USB 3.0 ',
@@ -54,34 +59,41 @@ export const Products = () => {
       image: 'https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg'
     }
   ]
-  const ProductCards = Products.map(Product => (
+  const productCards = products.map(product => (
     <ProductCard
-      id={Product.id}
-      title={Product.title}
-      price={Product.price}
-      img={Product.image}
+      key={product.id}
+      id={product.id}
+      title={product.title}
+      price={product.price}
+      img={product.image}
+      showOrCloseCart={showOrCloseCart}
+      
     />
   ))
   return (
-    <CartProvider>
+    
       <MainWrapper>
-        <Header></Header>
-        <ProductsWrapper>{ProductCards}</ProductsWrapper>
-        <Footer></Footer>
-        { showCart &&  
-          <Cart  
-            showCart={showCart}
-            setShowCart={setShowCart}
-          />
-        }
-        
+        <CartProvider>
+            <Header showOrCloseCart={showOrCloseCart}></Header>
+            <ProductsWrapper >{productCards}</ProductsWrapper>
+            <Footer></Footer>
+            {isCartOpen ? <Cart iscartopen={isCartOpen} showOrCloseCart={showOrCloseCart}/>
+              : null
+            }
+        </CartProvider>
       </MainWrapper>
-    </CartProvider>
   )
 }
 const MainWrapper = styled.div`
   /*   display: flex;
   flex-direction: column; */
+  
+  /* ${({isCartOpen})=>
+    isCartOpen==true &&
+    css`
+      backdrop-filter: blur(24px);
+    `
+  } */
 `
 const ProductsWrapper = styled.div`
   position: fixed;
@@ -96,6 +108,7 @@ const ProductsWrapper = styled.div`
   height: 83vh;
   overflow-y: scroll;
   flex: auto;
+  backdrop-filter: blur(24px);
 
   @media (max-width: 1054px) {
     grid-template-columns: repeat(2, minmax(14rem, 30rem));
@@ -119,7 +132,7 @@ const ProductsWrapper = styled.div`
     height: 60vh;
   }
 
-  animation: fadeIn ease 2s;
+  animation: fadeIn ease .8s;
 
   @keyframes fadeIn {
     0% {

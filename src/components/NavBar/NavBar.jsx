@@ -7,19 +7,27 @@ import {
 import { FaShoppingCart } from 'react-icons/fa'
 import { StyledButton } from '../Button/Button'
 import { IconContext } from 'react-icons'
+import {CartProvider, useCart} from '../../context/CartContext'
 
-export const NavBar = () => {
+export const NavBar = ({showOrCloseCart}) => {
+  const {cart} = useCart()
+  const cartTotal = () => {
+    return cart.reduce((quantity, cartItem) => quantity + cartItem.quantity, 0) 
+  } 
+  
   return (
     <NavWrapper>
       <NavBarLink path='/' name='Home'></NavBarLink>
       <NavBarLink path='/products' name='Products'></NavBarLink>
       <ButtonContainer>
-        <StyledButton variant={'round'} >
+        <StyledButton variant='round' onClick={showOrCloseCart}>
           <IconContext.Provider value={{ className: 'cartIcon' }}>
             <FaShoppingCart />
           </IconContext.Provider>
         </StyledButton>
-        <Quantity>0</Quantity>
+        <CartProvider>
+          {cartTotal() > 0 ? <Quantity>{cartTotal()}</Quantity> : 0}
+        </CartProvider>
       </ButtonContainer>
     </NavWrapper>
   )

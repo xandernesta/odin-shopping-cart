@@ -1,42 +1,88 @@
 import React, {useContext} from 'react'
 import styled, { css } from 'styled-components'
-import { CartContext, CartDispatchContext } from '../../context/CartContext'
+import { useCart, useCartDispatch } from '../../context/CartContext'
+import {CartItemCard} from './CartItemCard'
+import {AiOutlineClose} from 'react-icons/ai'
+import {IconContext} from 'react-icons'
 
-export const Cart = ({
-  /*cart, toggleModal, addToCart, removeFromCart,  */ setShowCart,
-  showCart
-}) => {
-    const cart = useContext(CartContext)
-    const dispatch = useContext(CartDispatchContext);
 
-    const toggleCart = () => {
-        setShowCart(!showCart)
+
+export const Cart = ({isCartOpen,showOrCloseCart}) => {
+    const {cart, showCart, toggleShowCart} = useCart();
+    const dispatch = useCartDispatch();
+    const cartItems = cart
+    const sumTotalCost = () => {
+      return cart
+        .reduce(
+          (total, cartItem) => total + cartItem.price * cartItem.quantity,
+          0
+        )
+        .toFixed(2)
     }
-  
+    const itemCards = cartItems.map(item => (
+      <CartItemCard
+        key={item.id}
+        id={item.id}
+        title={item.title}
+        price={item.price}
+        img={item.image}
+        quantity={item.quantity}
+      />
+    ))
   return (
     <>
-      <CartModal className='cart'>
+      <CartModal className='cart' isCartOpen={isCartOpen}>
+        <ButtonContainer onClick={showOrCloseCart}>
+          <IconContext.Provider value={{ className: 'cartClose' }}>
+              <AiOutlineClose />
+          </IconContext.Provider>
+        </ButtonContainer>
         <Title>
           <h2>Your Shopping Cart</h2>
         </Title>
+        <CartItemsContainer>{itemCards}</CartItemsContainer> 
+        <Total>Total: ${sumTotalCost()}</Total>
       </CartModal>
-      <Overlay onClick={toggleCart}></Overlay>
+      <Overlay onClick={showOrCloseCart} isCartOpen={isCartOpen}></Overlay>
     </>
   )
 }
 const CartModal = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 1;
   width: 30vw;
   height: 100%;
   top: 0;
   right: 0;
   color: black;
-  background-color: white /* var(--gray) */;
-  padding: 1rem;
+  background-color: rgb(245,245,245) /* var(--gray) */;
+  padding: 1.2rem;
   display: flex;
   flex-direction: column;
-  transition: all 0.25s;
+  transition: all ease-in-out;
+  overflow-y: scroll;
+  animation: slideIn ease 1s;
+
+  @keyframes slideIn {
+    0% {
+      right: -110%;
+    }
+    100% {
+      right: 0;
+    }
+  }
+  @media (max-width: 1700px){
+    width: 40vw;
+  }
+  @media (max-width: 1300px){
+    width: 45vw;
+  }
+  @media (max-width: 1000px){
+    width: 55vw;
+  }
+  @media (max-width: 800px) {
+    width: 100vw;
+  }
 `
 const Overlay = styled.div`
   position: fixed;
@@ -44,9 +90,23 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   top: 0;
-  left: 0;
-  opacity: 0.6;
-  transition: all 0.25s;
+  animation: fadeCartIn ease 1s;
+  opacity: 0.8;
+
+  @keyframes fadeCartIn {
+    0% {
+      opacity: 0; 
+    }
+    100% {
+      opacity: 0.8;
+    }
+  }
+
+/*   ${({ isCartOpen }) =>
+    isCartOpen &&
+    css`
+      left: 0;
+    `} */
 `
 
 const Title = styled.div`
@@ -55,4 +115,29 @@ const Title = styled.div`
   align-items: center;
   padding-bottom: 1rem;
   text-transform: uppercase;
+`
+export const ButtonContainer = styled.div`
+  position: relative;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: transform 0.15s ease-in-out;
+
+  &:hover {
+    color: grey;
+  }
+/* 
+  &:active {
+    transform: scale(1.02);
+  } */
+`
+const CartItemsContainer = styled.div`
+ /*  display: flex;
+  flex-direction: column;
+  width: 100%; */
+  overflow: auto;
+`
+const Total = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
 `

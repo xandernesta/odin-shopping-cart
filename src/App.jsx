@@ -8,9 +8,9 @@ export function App () {
   return (
     <MainWrapper data-testid='appbg'>
       <h1>Dream Computers</h1>
-      <Link to='products'>
-        <FancyButton>Shop Now</FancyButton>
-      </Link>
+        <Link to='products'>
+          <FancyButton>Shop Now</FancyButton>
+        </Link>
     </MainWrapper>
   )
 }
@@ -37,6 +37,16 @@ const MainWrapper = styled.div`
     left: 45.4vw;
     padding: .8rem;
     width: 10rem;
+  }
+  animation: fadeIn ease 1.5s;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @media (max-width: 768px) {

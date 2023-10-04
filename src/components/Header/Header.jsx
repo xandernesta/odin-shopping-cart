@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { NavBar } from '../NavBar/NavBar'
 
-export function Header () {
+export function Header ({showOrCloseCart}) {
   return (
     <HeaderStyle>
       <StyledLink className="toApp" to='/'>Dream Computers</StyledLink>
-      <NavBar />
+      <NavBar showOrCloseCart={showOrCloseCart} />
     </HeaderStyle>
   )
 }

@@ -1,3 +1,3 @@
-import { StyledButton, FancyButton, CartButton } from './Button.styles.js'
+import { StyledButton, FancyButton, /* CartButton, */ SquareButton } from './Button.styles.js'
 
-export { StyledButton, FancyButton, CartButton }
+export { StyledButton, FancyButton,/*  CartButton, */ SquareButton }

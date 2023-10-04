@@ -1,20 +1,42 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useContext, useState, useReducer } from 'react'
 
-export const CartContext = createContext(null)
+export const CartContext = createContext({ cart: []}) //initial context cart: [],showCart: true,toggleShowCart: () => {}
 export const CartDispatchContext = createContext(null)
-//create useCart and useCartDispatch functions which are Custom Hooks like the best buy guy does
+
 
 export function CartProvider ({ children }) {
-  const [cart, dispatch] = useReducer(cartReducer, initialCart ?? [])
-
+  const [cart, dispatch] = useReducer(cartReducer, initialCart)
+  const [showCart, setShowCart] = useState(true)
+  const toggleShowCart = () => {
+    setShowCart(!showCart)
+    console.log(showCart) 
+    /* if (showCart===true) {setShowCart(false)}
+    else {setShowCart(true)} */
+  } 
+  const providerVals = {
+    cart,
+    showCart,
+    toggleShowCart
+  }
   return (
-    <CartContext.Provider value={cart}>
+    <CartContext.Provider value={providerVals}>
       <CartDispatchContext.Provider value={dispatch}>
-        {children}
+          {children}
       </CartDispatchContext.Provider>
     </CartContext.Provider>
   )
 }
+
+//create useCart and useCartDispatch functions which are Custom Hooks like the best buy guy does
+
+export function useCart () {
+  return useContext(CartContext)
+}
+
+export function useCartDispatch () {
+  return useContext(CartDispatchContext)
+}
+
 
 function cartReducer (cart, action) {
   switch (action.type) {
@@ -39,10 +61,32 @@ function cartReducer (cart, action) {
           ]
     }
     case 'removed': {
+      let itemInCart = cart.find(cartItem => cartItem.id === action.id)
+      if(itemInCart.quantity > 1) {
+        return cart.map(cartItem =>
+          cartItem.id === action.id
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem)
+        }
+      else
       return cart.filter(i => i.id !== action.id)
     }
   }
 }
+
+/* function showCartReducer(showCart, action){
+  switch (action.type){
+    case 'show': {
+      return showCart;
+    }
+    case 'hide': {
+      return !showCart;
+    }
+    default: {
+      throw Error('Uknown action: ' + action.type)
+    }
+  }
+} */
 
 const initialCart = [
   {
@@ -64,3 +108,5 @@ const initialCart = [
     quantity: 2
   }
 ]
+
+/* const initialState = true; */
