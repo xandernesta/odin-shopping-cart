@@ -74,19 +74,7 @@ function cartReducer (cart, action) {
   }
 }
 
-/* function showCartReducer(showCart, action){
-  switch (action.type){
-    case 'show': {
-      return showCart;
-    }
-    case 'hide': {
-      return !showCart;
-    }
-    default: {
-      throw Error('Uknown action: ' + action.type)
-    }
-  }
-} */
+
 
 const initialCart = [
   {
@@ -109,4 +97,3 @@ const initialCart = [
   }
 ]
 
-/* const initialState = true; */

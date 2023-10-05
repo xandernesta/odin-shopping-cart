@@ -4,6 +4,7 @@ import { useCart, useCartDispatch } from '../../context/CartContext'
 import {CartItemCard} from './CartItemCard'
 import {AiOutlineClose} from 'react-icons/ai'
 import {IconContext} from 'react-icons'
+import {StyledButton} from '../Button/Button'
 
 
 
@@ -42,8 +43,11 @@ export const Cart = ({isCartOpen,showOrCloseCart}) => {
         </Title>
         <CartItemsContainer>{itemCards}</CartItemsContainer> 
         <Total>Total: ${sumTotalCost()}</Total>
+        <CheckoutButton>CHECKOUT</CheckoutButton>
       </CartModal>
-      <Overlay onClick={showOrCloseCart} isCartOpen={isCartOpen}></Overlay>
+      <Overlay onClick={showOrCloseCart} isCartOpen={isCartOpen}>
+        <Backdrop></Backdrop>
+      </Overlay>
     </>
   )
 }
@@ -61,7 +65,7 @@ const CartModal = styled.div`
   flex-direction: column;
   transition: all ease-in-out;
   overflow-y: scroll;
-  animation: slideIn ease 1s;
+  animation: slideIn ease .2s;
 
   @keyframes slideIn {
     0% {
@@ -90,15 +94,19 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   top: 0;
-  animation: fadeCartIn ease 1s;
-  opacity: 0.8;
-
+  animation: fadeCartIn ease .3s;
+  opacity: 0.95;
+  backdrop-filter: blur(10px);
   @keyframes fadeCartIn {
     0% {
-      opacity: 0; 
+      opacity: 0;
+      backdrop-filter: blur(0px); 
+      
     }
     100% {
       opacity: 0.8;
+      backdrop-filter: blur(10px); 
+      
     }
   }
 
@@ -108,7 +116,12 @@ const Overlay = styled.div`
       left: 0;
     `} */
 `
-
+const Backdrop = styled.div`
+  height: 100%;
+  width:100%;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.8);
+`
 const Title = styled.div`
   display: flex;
   justify-content: center;
@@ -140,4 +153,13 @@ const Total = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
+`
+const CheckoutButton = styled(StyledButton)`
+  font-family: "Montserrat","JetBrains Mono","Poppins";
+  width: 65%;
+  align-self: center;
+  margin-top: auto;
+  border-radius: 5px;
+  background-color: var(--dark-aqua);
+
 `

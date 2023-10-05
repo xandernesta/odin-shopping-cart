@@ -27,7 +27,7 @@ const HeaderStyle = styled.header`
   left: 0;
   margin-bottom: 1rem;
   background: linear-gradient(90deg, var(--light-blue) 0%, var(--yellow) 100%);
-  border-color: 1px solid var(--dark-font-color);
+  border-color: 1px solid var(--dark-font-color) ; 
 
   @media (max-width: 1054px) {
     font-size: 3rem;
