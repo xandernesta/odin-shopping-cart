@@ -69,7 +69,6 @@ function filterData(productsData){
   )
 }
 const MainWrapper = styled.div`
- 
 `
 const ProductsWrapper = styled.div`
   position: fixed;
@@ -85,29 +84,7 @@ const ProductsWrapper = styled.div`
   overflow-y: scroll;
   flex: auto;
   backdrop-filter: blur(24px);
-
-  @media (max-width: 1054px) {
-    grid-template-columns: repeat(2, minmax(14rem, 30rem));
-    justify-content: center;
-    top: 14vh;
-  }
-
-  @media (max-width: 794px) {
-    grid-template-columns: repeat(2, minmax(20rem, 36rem));
-    justify-content: center;
-    top: 24vh;
-    gap: 1rem;
-    margin-left: 0.5rem;
-    row-gap: 0.1rem;
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(1, 36rem);
-    top: 38vh;
-    margin-left: 0.5rem;
-    height: 60vh;
-  }
-
+  justify-items: center;
   animation: fadeIn ease .8s;
 
   @keyframes fadeIn {
@@ -118,6 +95,41 @@ const ProductsWrapper = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 1054px) {
+    grid-template-columns: repeat(2, minmax(14rem, 30rem));
+    justify-content: center;
+    top: 14vh;
+  }
+  @media (max-width: 900px){
+      grid-template-columns: repeat(2, minmax(10rem, 30rem));
+      justify-content: center;
+      top: 28vh;
+      padding-bottom: 6rem;
+    }
+  @media (max-width: 794px) {
+    grid-template-columns: repeat(2, minmax(20rem, 36rem));
+    justify-content: center;
+    top: 24vh;
+    gap: 1rem;
+    margin-left: 0.5rem;
+    row-gap: 0.1rem;
+  }
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(2, 20rem);
+  }
+  @media (max-width: 669px) {
+    grid-template-columns: repeat(2, 16rem);
+  }
+  @media (max-width: 550px) {
+    grid-template-columns: repeat(1, 28rem);
+    top: 24vh;
+    margin-left: 1rem;
+  }
+  @media (max-width: 440px) {
+    grid-template-columns: repeat(1, 20rem);
+  }
+
 `
 const Loader = styled.div`
   align-content: center;

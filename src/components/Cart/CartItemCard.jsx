@@ -54,8 +54,13 @@ const ItemCardWrapper = styled.div`
   background-color: rgb(255, 255, 255);
   font-size: 1rem;
   margin: 1rem;
+  @media (max-width: 550px) {
+    margin: 0;
+  }
+  @media(max-height: 382px){
+    max-height: 80%;
+  }
 `
-
 const ImageContainer = styled.div`
   height: 80%;
   padding: .6rem;
@@ -63,6 +68,9 @@ const ImageContainer = styled.div`
 `
 const Image = styled.img`
   height: 20vh;
+  @media (max-width: 382px){
+    height: 14vh
+  }
 `
 
 const Details = styled.div`
@@ -72,6 +80,17 @@ const Details = styled.div`
   height: 100%;
   padding: 1rem;
   max-width: 15rem;
+  @media (max-width: 550px) {
+    padding: .5rem 0 ;
+  }
+  @media (max-width: 432px) {
+    max-width: 10rem;
+    padding: .5rem 0 ;
+  }
+  @media (max-height: 382px){
+    padding: 0;
+    max-width: 20rem;
+  }
 `
 const Info = styled.div`
   display: flex;
@@ -79,17 +98,30 @@ const Info = styled.div`
   justify-content: space-between;
   gap: 4rem;
   height: 100%;
-`
 
+  @media (max-width: 800px) {
+    gap: 1.5rem;
+  }
+  @media (max-width: 432px) {
+    gap: 1.5rem;
+  }
+  @media (max-height: 382px){
+    gap: .2rem;
+    padding: 0 .2rem;
+  }
+
+`
 const Title = styled.div`
   font-weight: bold;
 `
-
 const PriceAndQuantContainer = styled.div`
   display:flex;
   justify-content: space-between;
   padding: .2rem;
   border-top: 1px solid gray; 
+  @media (max-width: 432px) {
+    width: 9rem; 
+  }
 `
 const CartQuantity = styled.p`
   height: 100%;
@@ -100,6 +132,8 @@ const ButtonAndQuantContainer = styled.div`
   justify-content: space-between;
   
   @media (max-width: 800px) {
-    width: 5rem;
+    width: 6rem;  
+    padding: 0 4px ;
   }
+
 `

@@ -48,15 +48,23 @@ const CardWrapper = styled.div`
     @media (max-width: 794px) {
         width: 20rem;
     }
+    @media (max-width: 669px) {
+        width: 16rem;
+    }
     @media (max-width: 480px) {
-        width: 20rem;
+        width: 16rem;
     }
 `
 const ImageContainer = styled.div`
   height: 16rem;
   padding: 2rem;
   margin: 0 auto;
-  
+
+  @media (max-height: 832px) {
+    height: 10rem;
+    padding: .5rem;
+    margin: 0 auto;
+  }
 `
 const Details = styled.div`
   display: flex;
@@ -65,6 +73,12 @@ const Details = styled.div`
   gap: 2rem;
   height: 100%;
   padding: 1rem;
+
+  @media (max-height: 832px) {
+    gap: .5rem;
+    padding: .5rem;
+    
+  }
 `  
 const Image = styled.img`
     height: 100%;

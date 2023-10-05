@@ -65,7 +65,7 @@ const CartModal = styled.div`
   flex-direction: column;
   transition: all ease-in-out;
   overflow-y: scroll;
-  animation: slideIn ease .2s;
+  animation: slideIn ease .5s;
 
   @keyframes slideIn {
     0% {
@@ -84,8 +84,11 @@ const CartModal = styled.div`
   @media (max-width: 1000px){
     width: 55vw;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 812px) {
     width: 100vw;
+  }
+  @media (max-width: 432px){
+    padding: .4rem;
   }
 `
 const Overlay = styled.div`
@@ -94,7 +97,7 @@ const Overlay = styled.div`
   width: 100%;
   height: 100%;
   top: 0;
-  animation: fadeCartIn ease .3s;
+  animation: fadeCartIn ease .2s;
   opacity: 0.95;
   backdrop-filter: blur(10px);
   @keyframes fadeCartIn {
@@ -122,6 +125,10 @@ const Title = styled.div`
   align-items: center;
   padding-bottom: 1rem;
   text-transform: uppercase;
+  @media(max-height: 382px){
+    padding-bottom: 0;
+  }
+  
 `
 export const ButtonContainer = styled.div`
   position: relative;
@@ -133,18 +140,17 @@ export const ButtonContainer = styled.div`
   &:hover {
     color: grey;
   }
-
 `
 const CartItemsContainer = styled.div`
- /*  display: flex;
-  flex-direction: column;
-  width: 100%; */
   overflow: auto;
 `
 const Total = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
+  @media(max-height: 382px){
+    font-size: 1.2rem;
+  }
 `
 const CheckoutButton = styled(StyledButton)`
   font-family: "Montserrat","JetBrains Mono","Poppins";
@@ -153,5 +159,10 @@ const CheckoutButton = styled(StyledButton)`
   margin-top: auto;
   border-radius: 5px;
   background-color: var(--dark-aqua);
+
+  @media(max-height: 382px){
+    height: 2rem;
+    width: 50%;
+  }
 
 `

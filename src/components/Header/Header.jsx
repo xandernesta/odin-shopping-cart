@@ -45,6 +45,21 @@ const HeaderStyle = styled.header`
       font-size: 3.6rem;
     }
   }
+  @media (max-width: 600px) {
+    .toApp{
+      font-size: 3rem;
+    }
+  }
+  @media (max-width: 459px) {
+    .toApp{
+      font-size: 2.5rem;
+    }
+  }
+  @media (max-width: 484px) {
+    .toApp{
+      font-size: 2rem;
+    }
+  }
 `
 const StyledLink = styled(Link)`
   &:hover {
