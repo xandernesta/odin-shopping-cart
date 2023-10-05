@@ -41,7 +41,7 @@ export function useFetch(url, fetchOptions, dependencies = null) {
     return () => {
       isMounted = false;
     };
-  }, dependencies || [url]);
+  },  [url] || dependencies);
 
   const anticipateFetch = () => {
     setIsLoading(true);

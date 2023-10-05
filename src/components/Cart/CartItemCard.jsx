@@ -8,9 +8,6 @@ export const CartItemCard = ({id, title, price, img, quantity}) => {
   const {cart} = useCart()
   const dispatch = useCartDispatch()
   
-  console.log(dispatch)
-  console.log(cart)
-  
     return(
         <ItemCardWrapper>
             <ImageContainer>

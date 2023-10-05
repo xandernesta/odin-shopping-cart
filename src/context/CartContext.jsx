@@ -5,7 +5,7 @@ export const CartDispatchContext = createContext(null)
 
 
 export function CartProvider ({ children }) {
-  const [cart, dispatch] = useReducer(cartReducer, initialCart)
+  const [cart, dispatch] = useReducer(cartReducer, initialCart || [])
   const [showCart, setShowCart] = useState(true)
   const toggleShowCart = () => {
     setShowCart(!showCart)
@@ -74,9 +74,9 @@ function cartReducer (cart, action) {
   }
 }
 
+const initialCart = []
 
-
-const initialCart = [
+/* const initialCart = [
   {
     id: 9,
     title: 'WD 2TB Elements Portable External Hard Drive - USB 3.0 ',
@@ -95,5 +95,5 @@ const initialCart = [
     image: 'https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg',
     quantity: 2
   }
-]
+] */
 

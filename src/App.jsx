@@ -18,7 +18,7 @@ export function App () {
 const MainWrapper = styled.div`
   position: absolute;
   top: 0;
-  background-image: url(./src/assets/laptop_store_background.jpg);
+  background-image: url(./src/assets/laptop_store_background.jpg);//url(./src/assets/laptop_store_background.jpg)
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right center;

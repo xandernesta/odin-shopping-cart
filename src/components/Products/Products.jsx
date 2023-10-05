@@ -1,4 +1,4 @@
-import { useState , useContext } from 'react'
+import { useState , useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Footer } from '../Footer/Footer'
 import { Header } from '../Header/Header'
@@ -9,22 +9,23 @@ import { useFetch } from '../../hooks/useFetch'
 
 
 export const Products = () => {
-
   const [isCartOpen, setIsCartOpen] = useState(false)
 
   function showOrCloseCart(){
     setIsCartOpen(!isCartOpen)
   }
 
-  const [loadingProducts, error, productsData, anticipateFetch] = useFetch('https://fakestoreapi.com/products/category/electronics') 
-  function filterData(productsData){
-    const filteredData = productsData.map(
-      (product) => {
-      return {"id": product.id, "title":product.title, "price":product.price, "image":product.image}
-    })
-    return filteredData
-  }
-  
+const [loadingProducts, error, productsData, anticipateFetch] = useFetch('https://fakestoreapi.com/products/category/electronics',[]) 
+
+
+function filterData(productsData){
+  const filteredData = productsData.map(
+    (product) => {
+    return {"id": product.id, "title":product.title, "price":product.price, "image":product.image}
+  })
+  return filteredData
+}
+
   let productCards = {};
   if (productsData) {
     productCards = filterData(productsData).map(product => (
@@ -68,15 +69,7 @@ export const Products = () => {
   )
 }
 const MainWrapper = styled.div`
-  /*   display: flex;
-  flex-direction: column; */
-  
-  /* ${({isCartOpen})=>
-    isCartOpen==true &&
-    css`
-      backdrop-filter: blur(24px);
-    `
-  } */
+ 
 `
 const ProductsWrapper = styled.div`
   position: fixed;

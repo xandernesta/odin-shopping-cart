@@ -26,7 +26,7 @@ export const NavBar = ({showOrCloseCart}) => {
           </IconContext.Provider>
         </StyledButton>
         <CartProvider>
-          {cartTotal() > 0 ? <Quantity>{cartTotal()}</Quantity> : 0}
+          {cartTotal() > 0 ? <Quantity>{cartTotal()}</Quantity> : <Quantity>0</Quantity>}
         </CartProvider>
       </ButtonContainer>
     </NavWrapper>

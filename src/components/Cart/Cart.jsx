@@ -45,8 +45,8 @@ export const Cart = ({isCartOpen,showOrCloseCart}) => {
         <Total>Total: ${sumTotalCost()}</Total>
         <CheckoutButton>CHECKOUT</CheckoutButton>
       </CartModal>
-      <Overlay onClick={showOrCloseCart} isCartOpen={isCartOpen}>
-        <Backdrop></Backdrop>
+      <Overlay onClick={showOrCloseCart}>
+        {isCartOpen ? <></> : <Backdrop></Backdrop>}
       </Overlay>
     </>
   )
@@ -109,12 +109,6 @@ const Overlay = styled.div`
       
     }
   }
-
-/*   ${({ isCartOpen }) =>
-    isCartOpen &&
-    css`
-      left: 0;
-    `} */
 `
 const Backdrop = styled.div`
   height: 100%;
@@ -134,14 +128,12 @@ export const ButtonContainer = styled.div`
   cursor: pointer;
   font-size: 1.5rem;
   transition: transform 0.15s ease-in-out;
+  width: 1.2rem;
 
   &:hover {
     color: grey;
   }
-/* 
-  &:active {
-    transform: scale(1.02);
-  } */
+
 `
 const CartItemsContainer = styled.div`
  /*  display: flex;
