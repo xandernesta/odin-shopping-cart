@@ -1,7 +1,7 @@
 # Odin Shopping cart
 
 A simple fake store React app built for [The Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart).
-[Live Site]https://odin-shopping-cart.pages.dev/
+[Live Site](https://odin-shopping-cart.pages.dev/)
 
 ## Getting started
 
