@@ -8,7 +8,7 @@ export function Footer(){
         <FooterWrapper>
             Xander© 2023
             <GithubLink 
-             href="https://github.com/xandernesta/odin-weather-vite-app"
+             href="https://github.com/xandernesta/odin-shopping-cart"
              target="_blank"
              rel="noopener" >
             <FaGithub size="1.25em" /> 
