@@ -54,7 +54,7 @@ const MainWrapper = styled.div`
   @keyframes slideIn {
     0%{
       opacity: 0;
-      translate: -300px 0 ;
+      translate: -200px 0 ;
     }
     to {
       opacity: 1;
@@ -65,7 +65,7 @@ const MainWrapper = styled.div`
   @keyframes slideUp {
     0%{
       opacity: 0;
-      translate: 0 200px ;
+      translate: 0 50px ;
     }
     to {
       opacity: 1;

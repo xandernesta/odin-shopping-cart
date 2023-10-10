@@ -21,3 +21,4 @@ npm run dev
 - [React Router](https://reactrouter.com/)
 - [styled-components](https://styled-components.com/)
 - [Fake Store API](https://fakestoreapi.com/)
+- [Cloudflare](https://developers.cloudflare.com/pages/get-started/)
