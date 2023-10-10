@@ -91,8 +91,8 @@ const MainWrapper = styled.div`
     }
     ${FancyButton} {
       position: absolute;
-      bottom: 10vh;
-      left: 37vw;
+      bottom: 12vh;
+      left: 31vw;
   }
   }
 `
