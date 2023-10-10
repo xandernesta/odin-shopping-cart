@@ -43,8 +43,8 @@ const CardWrapper = styled.div`
     color: var(--dark-font-color);
     font-size: 1rem;
     box-shadow: 0px 0px 6px 4px rgba(0,0,0,.15);
-    margin: 1rem;
-    width: 80%;
+    margin: 1rem 0;
+    width: 85%;
     @media (max-width: 794px) {
         width: 20rem;
     }

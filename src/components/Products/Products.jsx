@@ -74,7 +74,7 @@ const ProductsWrapper = styled.div`
   position: fixed;
   top: 13vh;
   margin-bottom: 1rem;
-  margin-left: 6rem;
+  margin-left: 4rem;
   padding-right: 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
