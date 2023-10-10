@@ -30,6 +30,7 @@ const MainWrapper = styled.div`
     left: 10vw;
     font-size: 5rem;
     width: 100px;
+    animation: slideIn ease 1.25s;
   }
   ${FancyButton} {
     position: absolute;
@@ -37,6 +38,7 @@ const MainWrapper = styled.div`
     left: 45.4vw;
     padding: .8rem;
     width: 10rem;
+    animation: slideUp ease 1.25s;
   }
   animation: fadeIn ease 1.5s;
 
@@ -46,6 +48,28 @@ const MainWrapper = styled.div`
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    0%{
+      opacity: 0;
+      translate: -300px 0 ;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+  
+  @keyframes slideUp {
+    0%{
+      opacity: 0;
+      translate: 0 200px ;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
     }
   }
 
